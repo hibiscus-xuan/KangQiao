@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>d
+		<meta charset="UTF-8">
+		<title>服务积分</title>
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/top.css" />
+		<link rel="stylesheet" href="../../css/GeRenCenter/xiangxi_jifen.css" />
+	</head>
+	<body>
+		<div class="container" >
+		    <header><img src="../../img/gerenzhongxin/person_head.png" alt=""></header>
+		    <div class="content">
+		        <div class="content_top">
+		            <ul>
+		                <li class="fl"><a href="personal.html"><img src="../../img/back.png" alt=""></a></li>
+		                <li class="fr">服务积分</li>
+		            </ul>
+		        </div>
+		        <div class="shenqing">
+		        		<p class="space"></p>
+		        		<div class="shenhe">
+		        			<i>2000</i><span>分</span>
+		        		</div>
+		        		<p class="sh">您已经是志愿者目前您的积分是<span>2000</span>分</p>
+		        </div>
+		    </div>
+		</div>
+	</body>
+	<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../../script/common.js"></script>
+	<script>
+		$(function () {
+			function sendVolunteer() {
+				$.ajax({
+					url:localStorage.getItem("URL")+"/app/elder/volunteerIntegral",
+					type:"get",
+					dataType:"json",
+					data:{},
+					headers:{
+						"token":localStorage.getItem("token")
+					},
+					success: function (data) {
+						if(data.code === "-999"){
+							sendLogin(sendVolunteer);
+						}else {
+							if(data.code == "0"){
+								$(".sh span").html(data.response);
+								$(".shenhe i").html(data.response);
+							}
+						}
+					}
+				});
+			}
+			sendVolunteer();
+
+		})
+	</script>
+</html>

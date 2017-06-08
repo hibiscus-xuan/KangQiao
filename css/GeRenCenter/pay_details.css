@@ -1,0 +1,232 @@
+.container .content .content_bottom .content_payment {
+  margin-top: 30px;
+  width: 100%;
+  height: 1310px;
+}
+.container .content .content_bottom .content_payment .address {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  background-color: white;
+}
+.container .content .content_bottom .content_payment .address p {
+  width: 70%;
+  margin-left: 10%;
+  height: 80%;
+  line-height: 80px;
+  font-size: 38px;
+  text-align: left;
+}
+.container .content .content_bottom .content_payment .address p:nth-child(2) {
+  font-size: 30px;
+  line-height: 28px;
+  height: 20%;
+  margin-top: -50px;
+  color: #716f68;
+}
+.container .content .content_bottom .content_payment .address em {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  font-size: 80px;
+  font-family: 宋体;
+  font-weight: 300;
+  line-height: 120px;
+  text-align: center;
+  color: #c5c5c6;
+}
+.container .content .content_bottom .content_payment .address .line {
+  width: 100%;
+  height: 8px;
+  display: block;
+  margin-top: 20px;
+}
+.container .content .content_bottom .content_payment .address .line img {
+  width: 100%;
+  height: 100%;
+}
+.container .content .content_bottom .content_payment .order_message {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+  margin-top: 30px;
+}
+.container .content .content_bottom .content_payment .order_message .order_name {
+  width: 90%;
+  height: 100px;
+  line-height: 100px;
+  font-size: 34px;
+  text-align: left;
+  margin-left: 9%;
+}
+.container .content .content_bottom .content_payment .order_message .address_message {
+  width: 100%;
+  height: 300px;
+  background-color: #fffcf2;
+}
+.container .content .content_bottom .content_payment .order_message .address_message img {
+  	float: left;
+    width: 320px;
+    height: 250px;
+    margin: 20px 40px;
+}
+.container .content .content_bottom .content_payment .order_message .address_message .address_message_right {
+	  float: left;
+	  width: 60%;
+	  margin-left: 20px;
+	  font-weight: 100;
+}
+.container .content .content_bottom .content_payment .order_message .address_message .address_message_right h3 {
+    font-size: 45px;
+    color: #222222;
+    font-weight: 500;
+    height: 140px;
+    line-height: 140px;
+}
+.container .content .content_bottom .content_payment .order_message .address_message .address_message_right p {
+  width: 100%;
+  height: 60px;
+  line-height: 40px;
+  font-size: 35px;
+  color: #333;
+  letter-spacing: 1px;
+}
+.container .content .content_bottom .content_payment .order_message .address_message .address_message_right span {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 70px;
+  font-size: 40px;
+  color: #c5c5c5;
+}
+.container .content .content_bottom .content_payment .order_message .pending_payment {
+  width: 90%;
+  height: 100px;
+  margin-right: 9%;
+  text-align: right;
+  font-size: 40px;
+  line-height: 100px;
+}
+.container .content .content_bottom .content_payment .order_message .pending_payment span {
+  color: #ff6600;
+}
+.container .content .content_bottom .content_payment .order_list {
+  margin-top: 20px;
+  background-color: white;
+}
+.container .content .content_bottom .content_payment .order_list div {
+  width: 100%;
+  height: 100px;
+  border-bottom: 2px solid #fafafa;
+}
+.container .content .content_bottom .content_payment .order_list div span {
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  line-height: 100px;
+  font-size: 36px;
+  color: #656565;
+}
+.container .content .content_bottom .content_payment .order_list div .order_address {
+  width: 50%;
+  position: relative;
+}
+.container .content .content_bottom .content_payment .order_list div .order_address::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  width: 41px;
+  height: 41px;
+  background: url("../../img/zhucan/pay/order_address.png");
+}
+.container .content .content_bottom .content_payment .order_list ul li {
+  width: 90%;
+  height: 80px;
+  line-height: 80px;
+  font-size: 36px;
+  margin-left: 9%;
+  position: relative;
+}
+.container .content .content_bottom .content_payment .order_list ul li::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #00aaee;
+  position: absolute;
+  top: 30px;
+  left: -30px;
+}
+.container .content .content_bottom .content_payment .order_list ul li:nth-child(2n)::before {
+  background-color: #06cb0a;
+}
+.container .content .content_bottom .content_payment .order_list ul li span{
+	margin-left: 40px;
+}
+.container .content .content_bottom .content_payment .time {
+  width: 100%;
+  height: 775px;
+  margin-top: 20px;
+  background-color: white;
+  font-size: 40px;
+  background: url(../../img/gerenzhongxin/jifen_bg.png);
+    background-size: contain;
+}
+.container .content .content_bottom .content_payment .daifu{
+	height: 177px;
+}
+.container .content .content_bottom .content_payment .time p {
+  width: 90%;
+  height: 70px;
+  margin-left: 6%;
+  line-height: 70px;
+  text-align: left;
+  color: #666666;
+  font-size: 33px;
+}
+.container .content .content_bottom .content_payment .time p span{
+	color: #333;
+	margin-left: 40px;
+}
+.container .content .content_bottom .content_payment .time p#create_time {
+  padding-top: 25px;
+}
+.container .content .content_bottom .commit_box {
+  width: 1080px;
+  height: 120px;
+  position: fixed;
+  bottom: -36px;
+}
+.container .content .content_bottom .commit_box .commit_content {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+}
+.container .content .content_bottom .commit_box .commit_content div {
+  height: 100%;
+  float: left;
+  color: white;
+  font-size: 30px;
+  line-height: 80px;
+}
+.container .content .content_bottom .commit_box .commit_content .cancle {
+  margin-left: 60%;
+    background-color: #b7bbbe;
+    width: 20%;
+    font-size: 30px;
+    text-align: center;
+}
+.container .content .content_bottom .commit_box .commit_content .commit {
+  width: 20%;
+  background-color: #ffa800;
+  font-size: 30px;
+  text-align: center;
+}
+.container .content .content_bottom .commit_box .commit_content .commit a {
+  color: #fff;
+}

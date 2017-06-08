@@ -1,0 +1,70 @@
+.container .content .content_bottom div ul {
+  background-color: white;
+  margin-top: 30px;
+  width: 100%;
+}
+.container .content .content_bottom div ul li {
+  width: 100%;
+  height: 240px;
+  border-bottom: 2px solid #e7e7e7;
+  position: relative;
+}
+.container .content .content_bottom div ul li .adress_right,
+.container .content .content_bottom div ul li .adress_left {
+  float: left;
+}
+.container .content .content_bottom div ul li .adress_left {
+  width: 70%;
+  height: 100%;
+}
+.container .content .content_bottom div ul li .adress_left .sel {
+  display: inline-block;
+  width: 70px;
+  height: 65px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.container .content .content_bottom div ul li .adress_left .sel img {
+  width: 100%;
+  height: 100%;
+}
+.container .content .content_bottom div ul li .adress_left p {
+  width: 100%;
+  margin-left: 10%;
+  margin-top: 20px;
+  height: 49%;
+  line-height: 140px;
+  font-size: 40px;
+}
+.container .content .content_bottom div ul li .adress_left p:nth-child(3) {
+  line-height: 40px;
+  color: #999;
+}
+.container .content .content_bottom div ul li .adress_right {
+  width: 30%;
+  height: 100%;
+}
+.container .content .content_bottom div ul li .adress_right a .modify {
+  position: absolute;
+  top: 72px;
+  right: 100px;
+  width: 80px;
+  height: 80px;
+}
+.container .content .content_bottom div ul li .adress_right a .modify img {
+  width: 100%;
+  height: 100%;
+}
+.container .content .content_bottom div .add_adress {
+  margin-top: 30px;
+  width: 100%;
+  height: 120px;
+  background-color: white;
+  line-height: 120px;
+  text-align: center;
+  font-size: 40px;
+}
+.container .content .content_bottom div .add_adress a {
+  color: #eaae1e;
+}

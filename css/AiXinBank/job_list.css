@@ -1,0 +1,108 @@
+.container header img{
+    width: 100%;
+}
+.content{
+    background: #fafafa;
+}
+.content_top ul li.fr{
+    color: #2f3031;
+}
+.content_center{
+    width: 100%;
+    height: 1348px;
+}
+
+.content_center .top {
+    height: 380px;
+    width: 100%;
+}
+.content_center .top img{
+    float: left;
+    margin: 60px;
+    margin-left: 60px;
+    margin-top: 60px;
+    width: 250px;
+    height: 250px;
+
+}
+.content_center{
+    height: auto;
+    background-position: 0px 20px;
+}
+.content_center .top .top_right{
+    font-size: 35px;
+    padding-top: 70px;
+    color: #222;
+    display: inline-block;
+    float: left;
+    width: 480px;
+    padding-left: 60px;
+}
+.content_center .top .top_right p:first-child{
+    font-size: 50px;
+    font-weight: 500;
+    color: #222;
+    padding: 20px 0 80px 0;
+}
+.content_center .top .top_right p:nth-child(2){
+    padding-bottom: 50px;
+}
+
+/* 以下 是职位列表的样式*/
+.content_center .job_list {
+    width: 100%;
+    height: 1348px;
+    overflow: auto;
+}
+.content_center .job_list li {
+    background: url("../../img/AIXiBank/job_bg.png") no-repeat center;
+    background-size: 1050px 470px;
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+.line {
+    width: 80%;
+    height: 1px;
+    border: 0.5px dotted #ccc;
+    margin: 70px auto;
+    position: absolute;
+    bottom: 100px;
+    left: 104px;
+}
+.describe {
+    font-size: 40px;
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0px;
+}
+.describe span {
+    display: inline-block;
+    width: 18%;
+    height: 100%;
+    margin-left: 14%;
+    float: left;
+    position: relative;
+}
+.describe span::before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: -25px;
+    left: -59px;
+    background: url("../../img/AIXiBank/job_icon.png")no-repeat center;
+    /*background-size: 60px 68px;*/
+    width: 60px;
+    height: 68px;
+}
+.describe p {
+    display: inline-block;
+    width: 55%;
+    height: 100%;
+    margin-left: 2%;
+    float: left;
+    font-size: 35px;
+    line-height: 35px;
+    margin-top: -10px;
+}

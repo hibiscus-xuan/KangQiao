@@ -1,0 +1,69 @@
+.content{
+	background: none;
+	height: auto;
+}
+.cont_tit{
+    font-size: 35px;
+    height: 140px;
+    background: #ebf2f7;
+    line-height: 142px;
+    text-indent: 40px;
+    color: #717d85;
+}
+.address ul li{
+	height: 155px;
+}
+.address ul li img{
+	position: relative;
+	left: 1040px;
+	top: 65px;
+	width: 2%;
+}
+input{
+	outline: none;
+	border: none;
+	border-bottom: 2px solid #eeeeee ;
+	width: 1040px;
+	float: right;
+	height: 155px;
+	text-indent: 60px;
+	font-size: 35px;
+	color: #383a3b;
+}    
+li:nth-child(1) input{
+	background: url(../../img/zhucan/address/name.png) no-repeat;
+	background-position: 0;
+}
+li:nth-child(2) input{
+	background: url(../../img/zhucan/address/address.png) no-repeat;
+	background-position: 0;
+}
+li:nth-child(3) input{
+	background: url(../../img/zhucan/address/house.png) no-repeat;
+	background-position: 0;
+}
+li:nth-child(4) input{
+	background: url(../../img/zhucan/address/phone.png) no-repeat;
+	background-position: 0;
+}
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 1080px;
+	height: 190px;
+	border-top: 2px solid #eeeeee;
+	text-align: center;
+	line-height: 190px;
+}
+footer button{
+	background: #f8aa04;
+    border: 1px solid #f8aa04;
+    width: 980px;
+    height: 135px;
+    font-size: 50px;
+    color: #fff;
+    border-radius: 10px;
+}
+.content_top ul li.fr{
+	text-indent: -140px;
+}

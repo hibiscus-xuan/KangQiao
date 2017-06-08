@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付方式选择</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/ZhuCan/payment.css">
+</head>
+<body>
+<div class="container" >
+    <header><img src="../../img/head.png" alt=""></header>
+    <div class="content" >
+        <div class="content_top">
+            <ul>
+                <li class="fl"><a href="#" onClick="javascript:history.back(-1)"><img src="../../img/back.png" alt=""></a></li>
+                <li class="fr">付款</li>
+            </ul>
+        </div>
+        <div class="content_bottom " >
+            <div class="content_payment">
+                <div class="payment_method">
+                <span class="method_head">支付方式选择</span>
+                <ul>
+                <li id="zhifubao">
+                <img src="../../img/zhucan/pay/pay_01.png" alt="">
+                <div>
+                <p>支付宝</p>
+                <p>推荐已安装支付宝得用户使用</p>
+                <span class="icon"><img src="../../img/zhucan/pay/icon_01.png" alt=""></span>
+                </div>
+                </li>
+                <li id="yinlingka">
+                <img src="../../img/zhucan/pay/pay_02.png" alt="">
+                <div>
+                <p>支付宝</p>
+                <p>推荐已安装支付宝得用户使用</p>
+                <span class="icon"><img src="../../img/zhucan/pay/icon_01.png" alt=""></span>
+                </div>
+                </li>
+                <li id="cash">
+                <img src="../../img/zhucan/pay/pay_03.png" alt="">
+                <div>
+                <p>支付宝</p>
+                <p>推荐已安装支付宝得用户使用</p>
+                <span class="icon"><img src="../../img/zhucan/pay/icon_01.png" alt=""></span>
+                </div>
+                </li>
+                </ul>
+                </div>
+            </div>
+            <div class="commit_box">
+                <div class="commit_content">
+                    <div class="total">待支付: ¥ 200</div>
+                    <div class="commit">付款</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗-->
+    <div class="popBox" style="display: none">
+        <div class="popup" id="popup_01">
+            <span><img src="../../img/zhucan/tips/tips_01.png" alt=""></span>
+            <p>支付成功</p>
+            <p>稍后会由工作人员将菜品送至您填写得地点</p>
+            <button>知道了</button>
+        </div>
+    </div>
+
+    <!--<div class="popup" id="popup_02"></div>-->
+    <!--<div class="popup" id="popup_03"></div>-->
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        // 头图
+        sendHeadPricture("diningPayment");
+        var payment_method="";
+        $(".payment_method ul li").on("click", function () {
+            $(this).find(".icon img").attr("src","../../img/zhucan/pay/icon_02.png");
+            $(this).siblings().find(".icon img").attr("src","../../img/zhucan/pay/icon_01.png");
+            payment_method = $(this).attr("id");
+        });
+        $(".commit").on("click", function () {
+            $(".popBox").css("display","block");
+        });
+        $(".popup button").on("click", function () {
+            $(".popBox").css("display","none");
+        });
+    });
+</script>
+</html>

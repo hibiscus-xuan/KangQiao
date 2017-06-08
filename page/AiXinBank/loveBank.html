@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>岗位信息</title>
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/top.css" />
+    <link rel="stylesheet" href="../../css/AiXinBank/lovebank.css" />
+</head>
+<body>
+    <div class="container" >
+        <header><img src="../../img/AIXiBank/loverbank.png" alt=""></header>
+        <div class="content">
+            <div class="content_top">
+                <ul>
+                    <li class="fl"><a href="job_list.html"><img src="../../img/back.png" alt=""></a></li>
+                    <li class="fr">岗位信息</li>
+                </ul>
+            </div>
+            <div class="content_center">
+                <!--<div class="top">-->
+                    <!--<img src="../../img/AIXiBank/bank.png" alt="">-->
+                    <!--<div class="top_right">-->
+                     	<!--<p>岗位名称</p>-->
+                     	<!--<p>发布者：万达信息股份有限公司</p>-->
+                     	<!--<p>还需志愿者：2人</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+				<!--<div class="message">-->
+					<!--<h2>岗位描述</h2>-->
+					<!--<p>申通地铁集团说，在建的8号线三期已经被名办正式更名为“轨道交通浦江线”,以示与8号线的运营模式的区别。浦江线全长申通地铁集团说，在建的8号线三期已经被名办正式更名为“轨道交通浦江线”,以示与8号线的运营模式的区别。浦江线全长</p>-->
+					<!--<p>申通地铁集团说，在建的8号线三期已经被名办正式更名为“轨道交通浦江线”,以示与8号线的运营模式的区别。浦江线全长</p>-->
+					<!--<div><button>申请</button></div>-->
+				<!--</div>-->
+             </div>
+    </div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+<script id="job_detail" type="text/html">
+    <div class="top" id="{{response.id}}">
+        <img src="../../img/AIXiBank/bank.png" alt="">
+        <div class="top_right">
+            <p>{{response.name}}</p>
+            <p>发布者：{{response.promulgator}}</p>
+            <p>还需志愿者：{{response.remain}}人</p>
+        </div>
+    </div>
+    <div class="message">
+        <h2>岗位描述</h2>
+        {{response.content}}
+        <div id="apply"><button>申请</button></div>
+    </div>
+</script>
+<script src="../../script/common.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+//            url:"http://172.16.24.200:8081/app/volunteerJob/one/"+Number(localStorage.getItem("job_id")),
+            url:localStorage.getItem("URL")+"/app/volunteerJob/one/"+Number(localStorage.getItem("job_id")),
+            dataType:"json",
+            type:"get",
+            headers:{
+                idNo:12345678
+            },
+            success: function (data) {
+                if(data.code=="0"){
+                    $(".content_center").html(template("job_detail",data));
+                    $("#apply").on("click", function () {
+                        function sendApply() {
+                            $.ajax({
+                                url:"http://172.16.24.200:8081/app/volunteerJob/applyJob/"+$(".top").attr("id"),
+//            url:localStorage.getItem("URL")+"/app/volunteerJob/applyJob/"+Number(localStorage.getItem("job_id")),
+                                dataType:"json",
+                                type:"post",
+                                headers:{
+                                    "token":localStorage.getItem("token")
+                                },
+                                success: function (data) {
+                                    if(data.code ="-999"){
+                                        sendLogin(sendApply);
+                                    }else {
+                                        alert(data.message);
+                                    }
+                                }
+                            });
+                        }
+                        sendApply();
+                    });
+                }else {
+                    alert(data.message);
+                }
+            }
+        });
+
+    })
+</script>
+</html>

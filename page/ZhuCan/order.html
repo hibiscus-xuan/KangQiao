@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单选择</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/ZhuCan/order.css">
+</head>
+<body>
+
+<div class="container" >
+    <header><img src="../../img/head.png" alt=""></header>
+    <div class="content">
+        <div class="content_top">
+            <ul>
+                <li class="fl"><a href="../../index.html"><img src="../../img/back.png" alt=""></a></li>
+                <li class="fr" style="width:700px;">菜单</li>
+                <div class="organization">
+                   <span></span> 机构名称
+                    <ul>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+        <div class="content_bottom " >
+            <div class="date_tab">
+                <span>本周菜谱</span>
+                <ul>
+                    <li class="fl"><a href="#"><span class="week">周一</span><span class="date">12/5</span></a></li>
+                    <li class="fl"><a href="#"><span class="week">周一</span><span class="date">12/5</span></a></li>
+                    <li class="fl"><a href="#"><span class="week">周一</span><span class="date">12/5</span></a></li>
+                    <li class="fl"><a href="#"><span class="week">周一</span><span class="date">12/5</span></a></li>
+                    <li class="fl"><a href="#"><span class="week">周一</span><span class="date">12/5</span></a></li>
+                </ul>
+            </div>
+            <div class="menu" style="">
+                    <ul class="menu_box">
+                        <!--<li id="taocan_1">-->
+                            <!--<div class="food_box">-->
+                                <!--<span class="menu_title">套餐A</span>-->
+                                <!--<div class="taocan_box">-->
+                                    <!--<ul class="clearfix">-->
+                                            <!--<li>-->
+                                                <!--<img src="../../img/zhucan/order/food_06.png" alt="">-->
+                                                <!--<span class="food_name">草莓牛奶</span>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<img src="../../img/zhucan/order/food_01.png" alt="">-->
+                                                <!--<span class="food_name">老字号锅贴</span>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<img src="../../img/zhucan/order/food_02.png" alt="">-->
+                                                <!--<span class="food_name">草莓牛奶</span>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<img src="../../img/zhucan/order/food_02.png" alt="">-->
+                                                <!--<span class="food_name">草莓牛奶</span>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<img src="../../img/zhucan/order/food_02.png" alt="">-->
+                                                <!--<span class="food_name">草莓牛奶</span>-->
+                                            <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<div class="menu_select">-->
+                                    <!--<span class="price_box">套餐金额: <span class="price">¥9</span></span>-->
+                                    <!--<span class="select_btn" flag="true"><a href="javascript:void(0)"><img src="../../img/zhucan/order/select_before.png" alt=""></a></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    </ul>
+            </div>
+            <div class="shopCar_box">
+                <div class="tips">
+                    就餐日期: <span id="date_01">04-10</span> 到 <span id="date_02">04-17</span>
+                </div>
+                <div class="shopCar">
+                    <div class="car" id="car" flag="true">
+                        <img src="../../img/zhucan/order/shop_car.png" alt="">
+                        <span class="number">0</span>
+                    </div>
+                    <div class="total">¥ 0</div>
+                    <div class="commit"><a href="address_list.html">订餐</a></div>
+                </div>
+                <div class="shopCar_list" style="display: none">
+                    <div class="shopCar_list_top">
+                        <span></span> 已选商品<span id="clear"><img src="../../img/zhucan/order/clear.png" alt=""></span>
+                    </div>
+                    <ul>
+                        <!--<li >-->
+                            <!--<span class="taocan_name">5/20 【普通套餐 A】</span>-->
+                            <!--<span class="taocan_price">¥ 9</span>-->
+                            <!--<span class="delete"><img src="../../img/zhucan/deltet.png" alt=""></span>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+<script id="taocan_list" type="text/html">
+    {{ each packages as item index}}
+    <li flag="{{item.id}}" name="{{item.name}}" week="{{item.week}}" price="{{item.price}}" date="{{item.date}}">
+        <div class="food_box">
+            <span class="menu_title">{{item.name}}</span>
+            <div class="taocan_box">
+                <ul class="clearfix">
+                    {{each item.dishes as value i}}
+                    <li>
+                        <img src="../../img/zhucan/order/food_06.png" alt="">
+                        <span class="food_name">{{value.name}}</span>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="menu_select">
+                <span class="price_box">套餐金额:¥<span class="price">{{item.price}}</span></span>
+                <span class="select_btn" flag="true"><a href="javascript:void(0)"><img src="../../img/zhucan/order/select_before.png" alt=""></a></span>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script id="tab_list" type="text/html">
+    {{each item as value i}}
+    <li class="fl"><a href="#"><span class="week">周一</span><span class="date">12/5</span></a></li>
+    {{/each}}
+</script>
+<script id="shop_list" type="text/html">
+    {{ each array as item index}}
+    <li id="{{item.id}}" name="{{item.name}}" price="{{item.price}}" time="{{item.time}}">
+        <span class="taocan_name">{{item.id}} 【{{item.name}}】</span>
+        <span class="taocan_price">¥ {{item.price}}</span>
+        <span class="delete"><img src="../../img/zhucan/deltet.png" alt=""></span>
+    </li>
+    {{/each}}
+</script>
+<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+<script src="../../script/common.js"></script>
+<script src="../../script/ZhuCan/order.js"></script>
+<script>
+
+</script>
+</html>

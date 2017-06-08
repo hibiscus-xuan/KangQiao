@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/GeRenCenter/pay_details.css">
+</head>
+<body>
+<div class="container" >
+    <header><img src="../../img/head.png" alt=""></header>
+    <div class="content" >
+        <div class="content_top">
+            <ul>
+                <li class="fl"><a href="myorder.html"><img src="../../img/back.png" alt=""></a></li>
+                <li class="fr">订单详情</li>
+            </ul>
+        </div>
+        <div class="content_bottom " >
+            <!--<div class="content_payment">
+                <div class="order_message">
+                    <p class="order_name">订单号: 22134567</p>
+                    <div class="address_message">
+                        <img src="../../img/zhucan/address/address_01.jpg" alt="">
+                        <div class="address_message_right">
+                            <h3>卫康新存送餐点</h3>
+                            <p>上海市徐汇区钦州北路22号103室</p>
+                            <span>就餐时间段: 04-20 到 04-09</span>
+                        </div>
+                    </div>
+                    <p class="pending_payment">待付款 <span>¥ 199.00</span></p>
+                </div>
+                <div class="order_list">
+                    <div>
+                        <span class="order_address">卫康新村送餐点</span>
+                    </div>
+                    <ul>
+                        <li>【A套餐】 周一 5/20</li>
+                        <li>【B套餐】 周一 5/21</li>
+                        <li>【C套餐】 周一 5/22</li>
+                        <li>【A套餐】 周一 5/23</li>
+                        <li>【B套餐】 周一 5/24</li>
+                    </ul>
+                </div>
+                <div class="time daifu">
+                    <p id="create_time">创建时间: <span>2016-11-27 09:30</span></p>
+                    <p id="order_time">下单时间: <span>2016-1127 09:40</span></p>
+                </div>
+            </div>-->
+            <!--<div class="commit_box">
+                <div class="commit_content">
+                    <div class="cancle">取消订单</div>
+                    <div class="commit"><a href="../ZhuCan/pay.html">去付款</a></div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+
+
+<script type="text/html" id="paydetail-list">
+	{{ each response as item index}}
+		<div class="content_payment">
+            <div class="order_message">
+                <p class="order_name">订单号: {{item.id}}</p>
+                <div class="address_message">
+                    <img src="../../img/zhucan/address/address_01.jpg" alt="">
+                    <div class="address_message_right">
+                        <h3>{{item.companyName}}</h3>
+                        <p>{{item.address}}</p>
+                        <span>就餐时间段: {{item.diningDate[0]}} 到 {{item.diningDate[1]}}</span>
+                    </div>
+                </div>
+                <p class="pending_payment">待付款 <span>¥ {{item.price}}</span></p>
+            </div>
+            <div class="order_list">
+                    <div>
+                        <span class="order_address">{{item.companyName}}</span>
+                    </div>
+                    <ul>
+                        <li><span>{{item.diningPages[0].name}}</span> {{item.diningPages[0].week}}  {{item.diningPages[0].date}} </li>
+                        <li><span>{{item.diningPages[0].name}}</span> {{item.diningPages[0].week}}  {{item.diningPages[0].date}} </li>
+                        <!--<li>【B套餐】 周一 5/21</li>
+                        <li>【C套餐】 周一 5/22</li>
+                        <li>【A套餐】 周一 5/23</li>
+                        <li>【B套餐】 周一 5/24</li>-->
+                    </ul>
+                </div>
+            <div class="time" style="height: auto;">
+                <p id="create_time">创建时间: <span>{{item.creatTime}}</span></p>
+                <p id="order_time">下单时间: <span>{{item.orderTime}}</span></p>
+            </div>
+        </div>
+        <div class="commit_box">
+            <div class="commit_content">
+                <div class="cancle">取消订单</div>
+                <div class="commit"><a href="../ZhuCan/pay.html">去付款</a></div>
+            </div>
+        </div>
+	{{ /each}}
+</script>
+
+
+<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+<script src="../../script/common.js"></script>
+
+<script>
+    $(function () {
+    	
+//    	send('http://complatepage.html','get',{},'.content_bottom','paydetail-list');
+
+        function sendDisableOrder(element,templateId) {
+            $.ajax({
+                type:"get",
+                url:localStorage.getItem("URL")+"/app/diningOrder/disableOrder/"+$(this).parent().parent().attr("id"),
+                async:true,
+                headers:{
+                    "token":localStorage.getItem("token")
+                },
+                success:function(data){
+                    if(data.code === '-999'){
+                        sendLogin(sendDisableOrder);
+                    }else {
+                        var str = $(element).html();
+                        if(data.code =="0"){
+                            $(element).html(str + template(templateId, data));
+                        }else {
+                            console.log(data.message);
+                        }
+                    }
+
+                }
+            });
+        }
+        sendDisableOrder(".content_bottom","paydetail-list");
+        var payment_method="";
+        $(".commit").on("click", function () {
+            $(".popBox").css("display","block");
+        });
+        $(".popup button").on("click", function () {
+            $(".popBox").css("display","none");
+        });
+    });
+</script>
+</html>

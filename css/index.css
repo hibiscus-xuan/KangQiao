@@ -1,0 +1,176 @@
+body {
+	font-size: 35px;
+}
+
+.content .index_header {
+	width: 100%;
+	height: 312px;
+}
+
+.index_header {
+	background: url(../img/weather.png) no-repeat;
+}
+
+.index_content {
+	width: 1080px;
+}
+
+.content_top_left {
+	width: 605px;
+	height: 1080px;
+	float: left;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.content_top_right li {
+	width: 470px;
+	height: 270px;
+	display: inline-block;
+	text-align: center;
+	line-height: 270px;
+}
+
+.content_top_right li:first-child {
+	background: url(../img/zixu.png) no-repeat;
+}
+
+.content_top_right li:nth-child(2) {
+	background: url(../img/zizhudaohang.png) no-repeat;
+}
+
+.content_top_right li:nth-child(3) {
+	background: url(../img/zucan.png) no-repeat;
+}
+
+.content_top_right li:nth-child(4) {
+	background: url(../img/gerenzhongxin.png) no-repeat;
+}
+
+.content_bottom_left {
+	background: url(../img/aixin.png) no-repeat;
+}
+
+.content_bottom_right {
+	background: url(../img/yanglaofuwu.png) no-repeat;
+}
+
+.content_bottom {
+	width: 1080px;
+}
+
+.content_bottom div {
+	width: 530px;
+	height: 253px;
+	text-align: center;
+	line-height: 255px;
+	margin-left: 6px;
+	margin: 0px 0 15px 6px;
+}
+
+.content_bottom div:last-child {
+	margin-left: ;
+}
+
+.index_footer li {
+	width: 350px;
+	height: 235px;
+	margin: 0px 0 10px 8px;
+}
+
+/*.index_footer ul li:first-child {
+	background: url(../img/guanggao1.png) no-repeat;
+}
+
+.index_footer ul li:nth-child(2) {
+	background: url(../img/guanggao2.png) no-repeat;
+}
+
+.index_footer ul li:nth-child(3) {
+	background: url(../img/guanggao3.png) no-repeat;
+}*/
+
+.content_top_right ul li a {
+	color: #fff;
+	font-size: 40px;
+	display: block;
+}
+
+.content_top_right ul li img {
+	vertical-align: middle;
+	margin-right: 40px;
+	margin-left: -40px;
+}
+
+
+/*----轮播图----*/
+
+#playBox {
+	width: 600px;
+	height: 1080px;
+	position: relative;
+	overflow: hidden;
+}
+
+#playBox .oUlplay {
+	width: 99999px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+#playBox .oUlplay li {
+	float: left;
+}
+
+#playBox .smalltitle {
+	width: 600px;
+	height: 40px;
+	position: absolute;
+	bottom: 15px;
+	z-index: 10
+}
+
+#playBox .smalltitle ul {
+	width: 100px;
+	margin: 0 auto;
+}
+
+#playBox .smalltitle ul li {
+	width: 10px;
+	height: 10px;
+	margin: 0 5px;
+	border-radius: 10px;
+	background: #ffffff;
+	float: left;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#playBox .smalltitle .thistitle {
+	background: #69aaec;
+	width: 30px;
+	height: 10px;
+}
+
+#playBox .pre {
+	cursor: pointer;
+	width: 25px;
+	height: 45px;
+	position: absolute;
+	top: 150px;
+	left: 10px;
+	z-index: 10;
+	text-align: center
+}
+
+#playBox .next {
+	cursor: pointer;
+	width: 25px;
+	height: 45px;
+	position: absolute;
+	top: 150px;
+	right: 10px;
+	z-index: 10;
+	text-align: center
+}

@@ -1,0 +1,115 @@
+.container header img{
+	width: 100%;
+}
+.content{
+	background: #fafafa;
+}
+.content_top ul li.fr{
+	text-indent: -140px;
+	color: #2f3031;
+}
+.jinggao{
+	height: 110px;
+	line-height: 115px;
+	color: #1db3b8;
+	background: #fef8e9;
+	font-size: 35px;
+	text-indent: 70px;
+}
+.message ul li{
+	height: 145px;
+	line-height: 145px;
+	border-bottom: 2px solid #eee;
+	font-size: 40px;
+	width: 940px;
+	margin-left: 70px;
+}
+.message ul li:last-child{
+	border-bottom: none;
+}
+.message ul li label{
+	display: inline-block;
+	width: 200px;
+	text-align:justify;
+}
+.message ul li p{
+	display: inline-block;
+}
+
+
+
+/*-------服务积分样式1----*/
+.shenqing{
+	width: 100%;
+	height: 1330px;
+	margin-top: 18px;
+	background: url(../../img/gerenzhongxin/jifen_bg.png);
+	background-size: contain;
+}
+.shenqing p{
+	height: 400px;
+    line-height: 400px;
+    font-size: 50px;
+    text-align: center;
+}
+.shenqing div{
+	text-align: center;
+}
+button{
+	font-size: 50px;
+	outline: none;
+    border: none;
+    width: 700px;
+    height: 150px;
+    line-height: 127px;
+    display: inline-block;
+    text-align: center;
+    margin: 50px 0;
+    border-radius: 80px;
+    color: #925b0b;
+}
+.bot1{
+	/*background:url(../../img/gerenzhongxin/bot1.png) no-repeat;*/
+	/*background-size: cover;*/
+    background: #ffcf45;
+    border: 3px solid #fff;
+    box-shadow: 5px 7px 40px 0px #ffcf45;
+}
+.bot2{
+	/*background:url(../../img/gerenzhongxin/bot2.png) no-repeat ;*/
+	/*background-size: cover;*/
+	background: none;
+    border: 3px solid #f9b023;
+    box-shadow: 5px 13px 19px 0px #fae9c9;
+}
+/*-------服务积分样式2----*/
+.shenqing .space{
+	height: 150px;
+}
+.shenhe{
+	width: 70%;
+    height: 600px;
+    line-height: 600px;
+    color: red;
+    font-size: 50px;
+    margin: 0 auto;
+	background: url(../../img/gerenzhongxin/shenhe.png) no-repeat;
+	background-size: contain;
+}
+.shenqing .sh{
+	height: 100px;
+	line-height: 100px;
+}
+
+/*------服务积分样式3-----*/
+.shenhe>i{
+	font-size: 75px;
+}
+.shenhe>span{
+    font-size: 40px;
+    color: #f75928;
+}
+.sh>span{
+    color: #faa90d;
+    font-size: 45px;
+}

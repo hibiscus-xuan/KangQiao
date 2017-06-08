@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>评估结果</title>
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/top.css" />
+		<link rel="stylesheet" href="../../css/GeRenCenter/pinggu.css" />
+	</head>
+	<body>
+		<div class="container" >
+		    <header><img src="../../img/gerenzhongxin/person_head.png" alt=""></header>
+		    <div class="content">
+		        <div class="content_top">
+		            <ul>
+		                <li class="fl"><a href="personal.html"><img src="../../img/back.png" alt=""></a></li>
+		                <li class="fr">评估结果</li>
+		            </ul>
+		        </div>
+		        <div class="shenqing">
+		        		<p>您还没有申请评估，请先申请评估哦~</p>
+		        		<div><button class="bot1">申请评估</button></div>
+		        		<div><button class="bot2"><a href="personal.html">不申请，返回个人中心</a></button></div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+	<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+	<script>
+		$(function () {
+			$(".bot1").on("click", function () {
+				alert("请前往柜台办理申请评估!");
+			});
+		})
+	</script>
+</html>

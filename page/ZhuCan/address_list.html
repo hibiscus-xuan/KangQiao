@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>送餐点选择</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/ZhuCan/address_list.css">
+</head>
+<body>
+<div class="container" >
+    <header><img src="../../img/head.png" alt=""></header>
+    <div class="content" >
+        <div class="content_top">
+            <ul>
+                <li class="fl"><a href="order.html" ><img src="../../img/back.png" alt=""></a></li>
+                <li class="fr">付款详情</li>
+            </ul>
+        </div>
+        <div class="content_bottom " >
+            <div class="content_payment">
+                <div class="order_message">
+                    <ul>
+                        <!--<li>-->
+                            <!--<div class="address_message">-->
+                                <!--<img src="../../img/zhucan/address/address_01.jpg" alt="">-->
+                                <!--<div class="address_message_right">-->
+                                    <!--<h3>卫康新存送餐点</h3>-->
+                                    <!--<p>上海市徐汇区钦州北路22号103室</p>-->
+                                    <!--<div ><img src="../../img/zhucan/address/local.png" alt="">据居住地距离< <span class="distance">755</span> m</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<span class="sel" ><img src="../../img/zhucan/address/sel.png" alt=""></span>-->
+                        <!--</li>-->
+                    </ul>
+                    <div style="height: 120px;width: 100%;"></div>
+                </div>
+            </div>
+            <div class="commit_box">
+                <div class="commit_content">
+                    <div class="commit"><a href="payment.html" onclick="localStorage.setItem('address_id',address_id);">确定</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+<script id="address_list" type="text/html">
+    {{ each response as item index }}
+    <li id="{{item.id}}">
+        <div class="address_message">
+            <img src="../../img/zhucan/address/address_01.jpg" alt="">
+            <div class="address_message_right">
+                <h3>{{item.name}}</h3>
+                <p>{{item.address}}</p>
+                <div ><img src="../../img/zhucan/address/local.png" alt="">据居住地距离< <span class="distance">{{item.distance}}</span> m</div>
+            </div>
+        </div>
+        <span class="sel" ><img src="../../img/zhucan/address/sel.png" alt=""></span>
+    </li>
+    {{/each}}
+</script>
+<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+<script src="../../script/common.js"></script>
+<script>
+    $(function () {
+        // 头图
+        sendHeadPricture("diningLocation");
+        var address= {};
+        $.ajax({
+            url:localStorage.getItem("URL")+"/app/diningLocation/list",
+            dataType:"json",
+            data:{
+                "organizationId":localStorage.getItem("organizationId")
+            },
+            type:"get",
+            success: function (data) {
+                var newArray = data.response;
+                $(data.response).each(function (ele, index) {
+                    // 如果图片没有,替换为默认图片
+                    if($(ele).imgUrl = ""){
+                        $(ele).imgUrl ="../../default.png";
+                    }
+                });
+                // 渲染模版
+                $(".order_message ul").html(template("address_list", data));
+                // 默认选择第一个送餐点
+                if(localStorage.getItem("address") =="undefined"){
+                    $(".order_message ul li").eq(0).find(".sel").css("display","block");
+                    address.id = $(".order_message ul li").eq(0).attr("id");
+                    address.name = $(".order_message ul li").eq(0).find("h3").html();
+                    address.addr = $(".order_message ul li").eq(0).find("p").html();
+                    address.img = $(".order_message ul li").eq(0).find("img").attr("src");
+                    localStorage.setItem('address',JSON.stringify(address));
+                }else {
+                    $(".order_message ul li").each(function (i, v) {
+                      if($(this).attr("id") === (JSON.parse(localStorage.getItem("address"))).id){
+                          $(this).find(".sel").css("display","block");
+                      }
+                    });
+                }
+                // 点击切换选择送餐点并记录送餐点得ID
+                $(".order_message ul li ").on("click", function () {
+                    $(this).find(".sel").css("display","block");
+                    $(this).siblings().find(".sel").css("display","none");
+                    address.id = $(this).attr("id");
+                    address.name = $(this).find("h3").html();
+                    address.addr = $(this).find("p").html();
+                    address.img = $(this).find("img").attr("src");
+                    localStorage.setItem('address',JSON.stringify(address));
+                });
+            }
+        });
+    });
+</script>
+</html>

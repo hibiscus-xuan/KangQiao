@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心</title>
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/top.css" />
+	<link rel="stylesheet" href="../../css/GeRenCenter/personal.css" />
+</head>
+<body>
+	<div class="container" >
+		<header><img src="../../img/gerenzhongxin/person_head.png" alt=""></header>
+		<div class="content">
+			<div class="content_top">
+				<ul>
+					<li class="fl"><a href="../../index.html"><img src="../../img/back.png" alt=""></a></li>
+					<li class="fr">个人中心</li>
+				</ul>
+			</div>
+			<div class="personal">
+				<ul>
+					<li><img src="../../img/gerenzhongxin/xiangxi.png" alt="" /><a href="xiangxixinxi.html">详细信息</a></li>
+					<li id="person"><img src="../../img/gerenzhongxin/jifen.png" alt="" /><a href="#">志愿者积分服务</a></li>
+					<li><img src="../../img/gerenzhongxin/jiankang.png" alt="" /><a href="">健康档案</a></li>
+					<li id="pinggu"><img src="../../img/gerenzhongxin/pinggu.png" alt="" /><a href="#">统一需求评估</a></li>
+					<li><img src="../../img/gerenzhongxin/dingdan.png" alt="" /><a href="myorder.html">我的订单</a></li>
+					<li><img src="../../img/gerenzhongxin/post.png" alt="" /><a href="person_post.html">我的岗位</a></li>
+					<li><img src="../../img/gerenzhongxin/lianxi.png" alt="" /><a href="">联系我们</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/common.js"></script>
+<script>
+		$(function () {
+			// 获取评估
+			function sendLevel(){
+				$.ajax({
+					url:localStorage.getItem("URL")+"/app/elder/evaluationLevel",
+					headers:{
+						"token":localStorage.getItem("token")
+					},
+					dataType:"json",
+					type:"get",
+					success: function (data) {
+						if(data.code === "-999"){
+							sendLogin(sendLevel);
+						}else {
+							if(data.code === "0"){
+								window.location.href="pinggu2.html";
+							}else{
+								window.location.href="pinggu1.html";
+							}
+						}
+					}
+				})
+			}
+			// 获取志愿者积分
+			function sendVolunteer() {
+				$.ajax({
+					url:localStorage.getItem("URL")+"/app/elder/volunteerIntegral",
+					type:"get",
+					dataType:"json",
+					data:{},
+					headers:{
+						"token":localStorage.getItem("token")
+					},
+					success: function (data) {
+						if(data.code === "-999"){
+							sendLogin(sendVolunteer);
+						}else {
+							if(data.code == "0"){
+								window.location.href = "jifen3.html";
+							}else if(data.code =="-2"){
+								window.location.href = "jifen1.html";
+							}else {
+								alert(data.message);
+							}
+						}
+
+					}
+				});
+			}
+			$("#person").on("click", function () {
+
+				sendVolunteer();
+
+			});
+			$("#pinggu").on("click",function () {
+				sendLevel();
+			});
+		})
+	</script>
+</html>

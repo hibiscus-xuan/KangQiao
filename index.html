@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="container">
+<div class="content" >
+    <header class="index_header">
+		
+    </header>
+    <div class="index_content">
+        <div class="content_top">
+            <div class="content_top_left" id="playBox">
+	            	<div class="pre"></div>
+					<div class="next"></div>
+				<div class="smalltitle">
+					<ul>
+						<li class="thistitle"></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+				<ul class="oUlplay">
+					<!--<li><img src="img/ban2.png" alt="" /></li>
+					<li><img src="img/ban2.png" alt="" /></li>
+					<li><img src="img/ban3.png" alt="" /></li>-->
+					<li><img /></li>
+					<li><img /></li>
+					<li><img /></li>
+				</ul>
+            </div>
+            <div class="content_top_right ">
+                <ul >
+                    <li><a href="page/ZiXun/zixun_list.html"><img src="img/yl.png" alt="" />养老资讯</a></li>
+                    <li><a href="page/ZiZhuDaoHang/daohang.html"><img src="img/zd.png" alt="" />自助导航</a></li>
+                    <li><a href="page/ZhuCan/order.html"><img src="img/jk.png" alt="" />健康助餐</a></li>
+                    <li><a href="page/GeRenCenter/personal.html"><img src="img/gr.png" alt="" />个人中心</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="content_bottom">
+            <a href="page/AiXinBank/job_list.html"><div class="content_bottom_left fl"></div></a>
+            <div class="content_bottom_right fl"></div>
+        </div>
+    </div>
+    <footer class="index_footer">
+        <ul>
+            <li class="fl"><img src="img/guanggao1.png" /></li>
+            <li class="fl"><img  src="img/guanggao2.png" /></li>
+            <li class="fl"><img src="img/guanggao3.png" /></li>
+        </ul>
+    </footer>
+</div>
+<script src="script/bower_components/artTemplate/example/web-test-speed/js/jquery-1.7.2.min.js"></script>
+<script src="script/common.js"></script>
+<script>
+	$(function(){
+        // 存储资讯列表标志
+        localStorage.setItem("zixun_flag",true);
+        // 存储套餐列表
+        localStorage.setItem("food","undefined");
+        // 存储订单总价
+        localStorage.setItem("total_mount","0");
+        // 存储机构ID
+        localStorage.setItem("organizationId",0);
+        // 存储服务器地址
+//        localStorage.setItem("URL","http://172.16.24.190:8081");
+        localStorage.setItem("URL","http://172.16.24.190:8081");
+        // 存储岗位id
+        localStorage.setItem("job_id",0);
+
+	    // 调用登录接口
+        sendLogin();
+        // 获取轮播图
+        function sendLoopPicture() {
+            $.ajax({
+                type:"get",
+                url:localStorage.getItem("URL")+"/app/loopPicture",
+                async:true,
+                success:function(data){
+                    var $_this={};
+                    $('.oUlplay li').each(function(index,ele){
+                        $_this = $(this);
+                            $(data.response).each(function(i, value){
+                                if(index == i){
+                                    $($_this).find("img").attr("src",value.imageUrl);
+                                }
+                            });
+                    });
+                }
+            });
+        }
+        sendLoopPicture();
+        // 获取广告
+        function sendAdvertisePicture() {
+            $.ajax({
+                type:"get",
+                url:localStorage.getItem("URL")+"/app/advertisePicture",
+                async:true,
+                success:function(data){
+                    var $_this={};
+                    $('.index_footer li').each(function(index,ele){
+                            $_this = $(this);
+                            $(data.response).each(function(i, value){
+                                if(index == i){
+                                    $($_this).find("img").attr("src",value.imageUrl);
+                                }
+                            });
+                        });
+                }
+            });
+        }
+        sendAdvertisePicture();
+    })
+
+</script>
+<script type="text/javascript">
+		function aa() {
+			var oDiv = document.getElementById('playBox');
+			var oPre = getByClass(oDiv, 'pre')[0];
+			var oNext = getByClass(oDiv, 'next')[0];
+			var oUlBig = getByClass(oDiv, 'oUlplay')[0];
+			var aBigLi = oUlBig.getElementsByTagName('li');
+			var oDivSmall = getByClass(oDiv, 'smalltitle')[0]
+			var aLiSmall = oDivSmall.getElementsByTagName('li');
+			var now = 0;
+
+			function tab() {
+				for(var i = 0; i < aLiSmall.length; i++) {
+					aLiSmall[i].className = '';
+				}
+				aLiSmall[now].className = 'thistitle'
+				startMove(oUlBig, 'left', -(now * aBigLi[0].offsetWidth))
+			}
+
+			for(var i = 0; i < aLiSmall.length; i++) {
+				aLiSmall[i].index = i;
+				aLiSmall[i].onclick = function() {
+					now = this.index;
+					tab();
+				}
+			}
+
+			oPre.onclick = function() {
+				now--
+				if(now == -1) {
+					now = aBigLi.length - 1;
+				}
+				tab();
+			}
+			oNext.onclick = function() {
+				now++
+				if(now == aBigLi.length) {
+					now = 0;
+				}
+				tab();
+			}
+			var timer = setInterval(oNext.onclick, 3000) //滚动间隔时间设置
+			oDiv.onmouseover = function() {
+				clearInterval(timer)
+			}
+			oDiv.onmouseout = function() {
+				timer = setInterval(oNext.onclick, 3000) //滚动间隔时间设置
+			}
+		}
+
+		function getStyle(obj, name) {
+			if(obj.currentStyle) {
+				return obj.currentStyle[name]
+			} else {
+				return getComputedStyle(obj, false)[name]
+			}
+		}
+
+		function getByClass(oParent, nClass) {
+			var eLe = oParent.getElementsByTagName('*');
+			var aRrent = [];
+			for(var i = 0; i < eLe.length; i++) {
+				if(eLe[i].className == nClass) {
+					aRrent.push(eLe[i]);
+				}
+			}
+			return aRrent;
+		}
+
+		function startMove(obj, att, add) {
+			clearInterval(obj.timer)
+			obj.timer = setInterval(function() {
+				var cutt = 0;
+				cutt = Math.round(parseFloat(getStyle(obj, att)));
+
+				var speed = (add - cutt) / 8;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				if(cutt == add) {
+					clearInterval(obj.timer)
+				} else {
+					obj.style[att] = cutt + speed + 'px';
+				}
+
+			}, 30)
+		}
+		aa();
+
+	</script>
+</body>
+</html>

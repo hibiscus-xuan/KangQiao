@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>导航</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/ZiZhuDaoHang/daohang.css">
+    <script type='text/javascript' src="http://api.map.baidu.com/api?v=2.0&ak=Z8Cfot9mYfWZzrkqAsxczHNSKw7SMEBI"></script>
+</head>
+
+<body>
+<div class="container">
+    <header><img src="../../img/zi_head.png" alt=""></header>
+    <div class="content">
+        <div class="content_top">
+            <ul>
+                <li class="fl">
+                    <a href="../../index.html"><img src="../../img/back.png" alt=""></a>
+                </li>
+                <li class="fr">自助导航</li>
+            </ul>
+        </div>
+        <div class="content_bottom">
+            <div class="bottom_left fl">
+                <ul class="items">
+                    <!--<li class="item "><a href="#">社区管理单位</a></li>
+            <li class="item"><a href="#">管理中心</a></li>
+            <li class="item"><a href="#">社区生活服务设施</a></li>
+            <li class="item"><a href="#">社区为老服务设施</a></li>
+            <li class="item"><a href="#">社会组织中心</a></li>
+            <li class="item"><a href="#">其他生活服务</a></li>-->
+                    <!--<li class="item"></li>-->
+                </ul>
+            </div>
+            <!--//这里是右侧得地图-->
+            <div class="bottom_right fl" id="l-map"></div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+
+<!--
+作者：171127609@qq.com
+时间：2017-05-22
+描述：自助导航列表
+-->
+<!--<script id="zizhu_list" type="text/html">
+{{ each response as item index}}
+<li class="item" id="{{item.id}}">
+    <a href="##">{{item.name}}</a>
+</li>
+{{/each}}
+</script>-->
+
+<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+<script src="../../script/common.js"></script>
+<script>
+    $(function() {
+        //		send('http://daohang.html','get',{},'.items','zizhu_list');
+        $('.item').on('click', function() {
+            $(this).addClass('item_click');
+            $(this).siblings().removeClass('item_click');
+        })
+
+        $.ajax({
+            type: "get",
+            url: localStorage.getItem("URL")+"/app/navigation/allClass",
+            async: true,
+            dataType: "json",
+            headers: {
+                "idNo": 12345678
+            },
+            success: function(date) {
+                //				console.log(date);
+                var list = date.response;
+
+                for(var i = 0; i < list.length; i++) {
+                    var li = "";
+                    li += "<li class='item'>";
+                    var p = list[i];
+                    li += '<a href="#">' + p.name + '</a>';
+                    li += '</li>'
+                }
+                $('.items').append(li);
+            }
+        });
+        $.ajax({
+            type: "get",
+            url: localStorage.getItem("URL")+"/app/location/allLocation/1",
+            async: true,
+            dataType: "json",
+            headers: {
+                "idNo": 12345678
+            },
+            success: function(date) {
+                var list = date.response;
+
+                function maps(box_id, lists ) {
+                    var map = new BMap.Map(box_id);
+                    map.centerAndZoom(new BMap.Point(121.4803295328, 31.2363429624), 14);
+                    var data_info = [];
+                    for(var i=0,length = list.length;i<length;i++){
+                        data_info[i]={};
+                    }
+                    $(lists).each(function(index, ele) {
+                        data_info[index].lot = ele.latitude;
+                        data_info[index].lat = ele.longitude;
+                        data_info[index].add = ele.address;
+                    })
+                    var opts = {
+                        width: 250, // 信息窗口宽度
+                        height: 80, // 信息窗口高度
+                        title: "信息窗口", // 信息窗口标题
+                        enableMessage: true //设置允许信息窗发送短息
+                    };
+                    for(var i = 0; i < data_info.length; i++) {
+                        var marker = new BMap.Marker(new BMap.Point(data_info[i].lot, data_info[i].lat)); // 创建标注
+                        var content = data_info[i].add;
+                        map.addOverlay(marker); // 将标注添加到地图中
+                        addClickHandler(content, marker);
+                    }
+
+                    function addClickHandler(content, marker) {
+                        marker.addEventListener("click", function(e) {
+                            openInfo(content, e)
+                        });
+                    }
+
+                    function openInfo(content, e) {
+                        var p = e.target;
+                        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                        var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象
+                        map.openInfoWindow(infoWindow, point); //开启信息窗口
+                    }
+                }
+                maps('l-map',list);
+            }
+        });
+    })
+</script>
+
+<script>
+    //点击切换侧边导航
+    $(function() {
+        $('.item').on('click', function() {
+            $(this).addClass('item_click');
+            $(this).siblings().removeClass('item_click');
+
+        })
+    })
+</script>
+
+</html>

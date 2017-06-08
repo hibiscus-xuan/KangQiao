@@ -1,0 +1,40 @@
+.container header img{
+	 width: 100%;
+ }
+.content{
+	background: #fafafa;
+}
+.content_top ul li.fr{
+	text-indent: -140px;
+	color: #2f3031;
+}
+.personal ul{
+	margin-top: 20px;
+	background: #FFF;
+}
+.personal ul li{
+	width: 1040px;
+	height: 180px;
+	margin-left: 20px;
+	line-height: 180px;
+	font-size: 50px;
+	color: #222;
+	border-bottom: 2px solid #eee;
+}
+.personal ul li:last-child{
+	border-bottom: none;
+}
+.personal ul li img{
+	width: 7%;
+    vertical-align: middle;
+    margin: 0 60px 0 50px;
+}
+.personal ul li{
+	background: url(../../img/zhucan/address/arrow.png) no-repeat;
+	background-size: 2%;
+    background-position: 1000px;
+} 
+.personal ul li a{
+	display: inline-block;
+	width: 850px;
+}

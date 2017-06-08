@@ -1,0 +1,175 @@
+header {
+  width: 100%;
+  height: 420px;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+.content {
+  width: 100%;
+  height: 1500px;
+  background-color: #f4f4f4;
+}
+.content .content_bottom {
+  width: 100%;
+  height: 1328px;
+}
+.content .content_bottom .content_bottom_tab {
+  height: 124px;
+  background-color: white;
+  margin-top: 20px;
+}
+.content .content_bottom .content_bottom_tab a {
+  display: inline-block;
+  width: 49%;
+  height: 124px;
+  line-height: 124px;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 400;
+  color: #7c7c7c;
+  float: left;
+  position: relative;
+}
+.content .content_bottom .content_bottom_tab a span {
+  display: none;
+  width: 180px;
+  height: 20px;
+  background-color: #fec81f;
+  position: absolute;
+  left: 32.5%;
+  bottom: 0;
+}
+.content .content_bottom .zixun_items {
+  height: 1312px;
+  overflow: auto;
+}
+.content .content_bottom .zixun_items .item {
+  margin-bottom: 20px;
+  background-color: white;
+}
+.content .content_bottom .zixun_items .item .item_left,
+.content .content_bottom .zixun_items .item .item_right {
+  height: 364px;
+}
+.content .content_bottom .zixun_items .item .item_left {
+  width: 430px;
+  text-align: center;
+  padding-top: 30px;
+}
+.content .content_bottom .zixun_items .item .item_right {
+  width: 620px;
+}
+.content .content_bottom .zixun_items .item .item_right .headline {
+  padding-top: 46px;
+  font-size: 50px;
+  text-align: left;
+  height: 204px;
+  line-height: 45px;
+  width: 100%;
+  font-weight: 400;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.content .content_bottom .zixun_items .item .item_right .describe {
+  font-size: 36px;
+  height: 164px;
+  line-height: 40px;
+  text-align: left;
+  width: 100%;
+}
+.content .content_bottom .zixun_items .item .item_right .time {
+  display: inline-block;
+  font-size: 24px;
+  height: 50px;
+  text-align: right;
+  line-height: 30px;
+  width: 96%;
+  margin-right: 10px;
+}
+.content .content_bottom .huodong_items {
+  display: none;
+  width: 100%;
+  height: 1312px;
+  overflow: auto;
+  background-color: #e8f2f6;
+}
+.content .content_bottom .huodong_items .item {
+  width: 1030px;
+  height: 792px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+.content .content_bottom .huodong_items .item a {
+  width: 100%;
+  height: 100%;
+}
+.content .content_bottom .huodong_items .item a .item_content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: white;
+  border-radius: 0px 0px 15px 15px;
+}
+.content .content_bottom .huodong_items .item a .item_content img {
+  width: 100%;
+  height: 520px;
+  border-radius: 0px 0px 15px 15px;
+}
+.content .content_bottom .huodong_items .item a .item_content .item_title {
+  font-size: 42px;
+  font-weight: 400;
+  display: block;
+  width: 950px;
+  margin: 30px 40px;
+  height: 164px;
+  line-height: 60px;
+  border-bottom: 2px solid #eee;
+}
+.content .content_bottom .huodong_items .item a .item_content .item_time {
+  font-size: 30px;
+  line-height: 11px;
+  color: #7c7c7c;
+  text-align: right;
+  padding-right: 22px;
+  display: block;
+  width: 994px;
+  height: 50px;
+}
+.content .content_bottom .add {
+  width: 100%;
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+  font-size: 50px;
+  position: fixed;
+  bottom: 0;
+}
+.content .content_details {
+  padding-top: 20px;
+  height: 1328px;
+  overflow: auto;
+}
+.content .content_details .title {
+  padding-top: 35px ;
+  font-size: 68px;
+  font-weight: 400;
+  width: 1000px;
+  line-height: 80px;
+  margin-left: 40px;
+}
+.content .content_details .updateTime {
+  display: block;
+  width: 90%;
+  height: 180px;
+  margin-left: 4%;
+  font-size: 34px;
+  font-weight: 300;
+  color: #7c7c7c;
+  line-height: 180px;
+}
+.content .content_details .article {
+  padding: 0px 40px;
+}

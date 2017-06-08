@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单确认</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/ZhuCan/payment.css">
+</head>
+<body>
+<div class="container" >
+    <header><img src="../../img/head.png" alt=""></header>
+    <div class="content" >
+        <div class="content_top">
+            <ul>
+                <li class="fl"><a href="address_list.html"><img src="../../img/back.png" alt=""></a></li>
+                <li class="fr">订单</li>
+            </ul>
+        </div>
+        <div class="content_bottom " >
+            <div class="content_payment">
+                <div class="address">
+                        <div class="address_message">
+                            <img src="../../img/zhucan/address/address_01.jpg" alt="">
+                            <div class="address_message_right">
+                                <h3></h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <span class="line"><img src="../../img/zhucan/pay/line.png" alt=""></span>
+                </div>
+                <div class="order_list">
+                    <div>
+                        <span class="order_address">套餐内容</span>
+                    </div>
+                    <ul>
+                        <!--<li>【A套餐】 周一 5/20</li>-->
+                        <!--<li>【B套餐】 周一 5/21</li>-->
+                        <!--<li>【C套餐】 周一 5/22</li>-->
+                        <!--<li>【A套餐】 周一 5/23</li>-->
+                        <!--<li>【B套餐】 周一 5/24</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="commit_box">
+                <div class="commit_content">
+                    <div class="total">待支付: ¥ <span id="total">200</span></div>
+                    <div class="commit"><a href="#">提交订单</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+<script id="order_list" type="text/html">
+    {{each foodArray as item index}}
+    <li>【{{item.name}}】 {{item.week}} {{item.date}} &nbsp;&nbsp;价格 : ¥ {{item.price}}</li>
+    {{/each}}
+</script>
+<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+<script src="../../script/common.js"></script>
+<script>
+    $(function () {
+        var payment_method="";
+        var params = {};
+        // 头图
+        sendHeadPricture("diningPayment")
+        // 获取套餐,地址,总价信息
+        var foodArray = JSON.parse(localStorage.getItem("food"));
+        // 获取套餐id
+        var food_id = [];
+        for(var i=0;i<foodArray.length; i++){
+            food_id[i] = Number(foodArray[i].id);
+        }
+        var address = JSON.parse(localStorage.getItem("address"));
+//        console.log(address.id);
+        var total_mount = Number(localStorage.getItem("total_mount"));
+        params.diningLocationId = address.id;
+        params.packageIds = food_id;
+        params.sumPrice = total_mount;
+//       / console.log(JSON.stringify(params));
+        // 渲染地址
+        $(".address_message h3").html(address.name);
+        $(".address_message p").html(address.addr);
+        // 渲染总价
+        $("#total").html(total_mount);
+        // 渲染套餐
+        $(".order_list ul").html(template("order_list",{foodArray:foodArray}));
+        // 点击提交订单
+        $(".commit").on("click", function () {
+              function sendOrder() {
+                  $.ajax({
+                      url:localStorage.getItem("URL")+"/app/diningOrder/order",
+                      dataType:"json",
+                      type:"post",
+                      headers:{
+                          "token":localStorage.getItem("token"),
+                          "Content-Type":"application/json"
+                      },
+                      data:JSON.stringify(params),
+                      success: function (data) {
+                          if(data.code === "-999"){
+                              sendLogin(sendOrder);
+                          }else {
+                              alert(data.message);
+                              window.location.href = "pay.html";
+                          }
+                      }
+                  });
+              }
+              sendOrder();
+        });
+    });
+</script>
+</html>

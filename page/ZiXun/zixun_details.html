@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资讯详情</title>
+    <!--<link rel="stylesheet" href="../../css/common.css">-->
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/ZiXun/zixun_list.css">
+</head>
+<body>
+<div class="container" style="">
+    <!--头部-->
+    <header><img src="../../img/head.png" alt=""></header>
+    <div class="content">
+        <div class="content_top">
+            <ul style="list-style: none;margin-left: -5px;">
+                <li style="float: left;"onclick="javascript:history.back(-1)"><span ><img src="../../img/back.png" alt=""></span></li>
+                <li style="float: left;" class="fr">行业咨询</li>
+            </ul>
+        </div>
+        <div class="content_bottom content_details" style="background-color: white;">
+            <!--<h2>8号线"浦江线"将于沈杜公路站接驳</h2>-->
+            <!--<span>发布时间: 2017-05-05 17:00</span>-->
+            <!--&lt;!&ndash; 文章内容&ndash;&gt;-->
+            <!--<div class="article">-->
+                <!--<p> &nbsp;&nbsp;&nbsp;申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。</p>-->
+                <!--<img src="../../img/details_01.png" alt="">-->
+                <!--<p> &nbsp;&nbsp;&nbsp;申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。</p>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+<script id="details" type="text/html">
+    <h2 class="title">{{response.title}}</h2>
+    <span class="updateTime">发布时间: {{response.updateTime}}</span>
+    <div class="article">
+        <!--<p> &nbsp;&nbsp;&nbsp;申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。</p>-->
+        <!--<img src="../../img/details_01.png" alt="">-->
+        <!--<p> &nbsp;&nbsp;&nbsp;申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。申通地铁集团说: 在建得8号线三期已经被名办正式更名为"轨道交通浦江线",以示与8号线得运营模式得区别。浦江线全程约6.689公里,设6站,计划今年年底竣工试运行,届时将采用先进得自动驾驶技术。</p>-->
+        {{ #response.content}}
+    </div>
+</script>
+<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+<script src="../../script/common.js"></script>
+<script>
+    $(function () {
+        // 头图
+        sendHeadPricture("newsDetail");
+//        send("http://172.16.25.8:8081app/news/newsDetail","get",{id:1},".content_details","details");
+//        console.log(localStorage.getItem("zixun_flag"));
+        $.ajax({
+            url:localStorage.getItem("URL")+"/app/news/newsDetail",
+            dataType:"json",
+            data:{
+                id:1
+            },
+            type:"get",
+            success: function (data) {
+                if(data.code =="0"){
+                    $(".content_details").html(template("details", data));
+                }else {
+                    alert(data.message);
+                }
+            }
+        })
+    });
+</script>
+</html>

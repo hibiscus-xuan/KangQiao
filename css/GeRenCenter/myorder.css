@@ -1,0 +1,142 @@
+.container header img{
+	width: 100%;
+}
+.content{
+	background: #fafafa;
+}
+.content_top ul li.fr{
+	text-indent: -140px;
+	color: #2f3031;
+}
+
+.content .content_bottom {
+  width: 100%;
+}
+.content .content_bottom .content_bottom_tab {
+  height: 124px;
+  background-color: white;
+  margin-top: 20px;
+}
+.content .content_bottom .content_bottom_tab a {
+  display: inline-block;
+  width: 49%;
+  height: 124px;
+  line-height: 124px;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 400;
+  color: #7c7c7c;
+  float: left;
+  position: relative;
+}
+.content .content_bottom .content_bottom_tab a span {
+  display: none;
+  width: 180px;
+  height: 20px;
+  background-color: #fec81f;
+  position: absolute;
+  left: 32.5%;
+  bottom: 0;
+}
+
+
+
+ .daifu_items li,.wancheng_items li{
+	width: 100%;
+	height: 750px;
+	margin: 15px 0;
+	background: #FFF;
+	border-bottom: 2px solid #eee;
+	border-top: 2px solid #eee;
+}
+  li .order{
+	height: 100px;
+	line-height: 100px;
+	font-size: 40px;
+	color: #82888c;
+	margin-left: 40px;
+}
+
+  li .restaurant{
+	height: 300px;
+	background: #fffcf2;
+}
+  li .restaurant img{
+	width: 320px;
+	height: 250px;
+	margin: 20px 40px;
+	float: left;
+}
+  li .restaurant .address{
+	padding: 40px 0 0 0;
+}
+  li .restaurant .address .fir{
+	font-size: 45px;
+	color: #222222;
+	font-weight: 500;
+	height: 60px;
+	line-height: 60px;
+}
+  li .restaurant .address>span{
+	color: #333333;
+    font-size: 35px;
+    letter-spacing: 1px;
+    margin: 20px 0 30px 0;
+    display: block;
+    height: 80px;
+    line-height: 80px;
+}
+  li .restaurant .address .sec{
+	font-size: 40px;
+    color: #93a1a8;
+    height: 70px;	
+}
+  li .restaurant .thir{
+	height: 135px;
+	line-height: 135px;
+	font-size: 50px;
+	color: #666;
+	float: right;
+	margin-right: 40px;
+}
+  li .restaurant .thir span{
+	color: #ff6600;
+	font-size: 40px;
+	margin-left: 10px;
+}
+  li .restaurant .thir span i{
+	font-size: 50px;
+}
+  li .btn{
+	clear: both;
+	border-top: 2px solid #eee;
+}
+  li .btn button{
+	width: 260px;
+	height: 100px;
+	font-size: 40px;
+	margin-right: 40px;
+    float: right;
+    margin-top: 60px;
+    background: none;
+}
+  li .btn button.btn2{
+	border-radius: 7px;
+	outline: none;
+	color: #8da9b0;
+	border: 1px solid #8da9b0;
+}
+  li .btn button.btn1{
+	border-radius: 7px;
+	outline: none;
+	background: #ff860f;
+	color: #ff860f;
+	border: 1px solid #ff860f;
+	color: #fff;
+}
+  li .btn button.btn1 a{
+  	color: #fff;
+  }
+.wancheng_items li{
+	height: 540px;
+}

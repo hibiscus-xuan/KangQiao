@@ -1,0 +1,288 @@
+.container {
+  .content {
+    // 中间部分样式
+    .content_bottom {
+      .content_payment{
+        margin-top: 30px;
+        width: 100%;
+        height: 1348px;
+        //  订餐地址
+        .address {
+          width: 100%;
+          height: 270px;
+          position: relative;
+          background-color: white;
+          .address_message{
+            width: 100%;
+            height: 200px;
+            img{
+              float: left;
+              width: 280px;
+              height: 200px;
+              margin: 30px;
+              border: 1px solid #ccc;
+            }
+            .address_message_right{
+              float: left;
+              width: 60%;
+              margin-left: 0px;
+              font-weight: 100;
+              h3{
+                width: 100%;
+                height: 120px;
+                font-size: 45px;
+                line-height: 120px;
+                font-weight: 400;
+              }
+              p{
+                width: 100%;
+                height: 60px;
+                line-height: 30px;
+                font-size: 35px;
+                font-weight: 100;
+              }
+              div {
+                margin-left: 300px;
+                width: 400px;
+                height: 100px;
+                line-height: 100px;
+                font-size: 30px;
+                img {
+                  width: 30px;
+                  height: 45px;
+                  border: 0px;
+                }
+                .distance{
+
+                }
+              }
+            }
+          }
+          .line{
+            width: 100%;
+            height: 8px;
+            display: block;
+            margin-top: 35px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+        //  订餐列表
+        .order_list{
+          margin-top: 30px;
+          background-color: white;
+          div {
+            width: 100%;
+            height: 110px;
+            border-bottom: 2px solid #fafafa;
+            span {
+              height: 100%;
+              display: inline-block;
+              text-align: center;
+              line-height: 100px;
+              font-size: 36px;
+              color: #656565;
+            }
+            .order_address {
+              width: 50%;
+              position: relative;
+            }
+            .order_address::before {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 30px;
+              left: 90px;
+              width: 41px;
+              height: 41px;
+              background: url("../../img/zhucan/pay/order_address.png");
+            }
+            .order_name {
+              width: 45%;
+            }
+          }
+          ul {
+            //height: 500px;
+            li {
+              width: 90%;
+              height: 95px;
+              line-height: 80px;
+              font-size: 36px;
+              margin-left: 9%;
+              position: relative;
+            }
+            li::before{
+              content: "";
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              border-radius: 10px;
+              background-color: #00aaee;
+              position: absolute;
+              top:30px;
+              left: -10px;
+            }
+            li:nth-child(2n)::before{
+               background-color: #06cb0a;
+            }
+          }
+        }
+        //  支付方式
+        .payment_method{
+          width: 100%;
+          height: 625px;
+          background-color: white;
+          margin-top: 20px;
+          font-size: 34px;
+          .method_head {
+            display: block;
+            width: 90%;
+            margin-left: 9%;
+            height: 100px;
+            line-height: 100px;
+          }
+          ul {
+            li {
+              border-top: 2px solid #e7e7e7;
+              width: 90%;
+              height: 120px;
+              margin-left: 9%;
+              line-height: 140px;
+              padding: 20px 0px;
+              img {
+                float: left;
+                width: 120px;
+                height: 120px;
+                //margin-top: 20px;
+              }
+              div {
+                margin-left: 20px;
+                float: left;
+                width: 820px;
+                height: 160px;
+                position: relative;
+                p {
+                  height: 60px;
+                  line-height: 60px;
+                  width: 100%;
+                }
+                p:nth-child(2){
+                  height: 40px;
+                  line-height: 40px;
+                  font-size: 28px;
+                  color: #999;
+                }
+                .icon {
+                  position: absolute;
+                  top: 40px;
+                  right: 80px;
+                  width: 40px;
+                  height: 40px;
+                  img {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      // 提交
+      .commit_box {
+        width: 1080px;
+        height: 150px;
+        position: fixed;
+        bottom: -36px;
+        .commit_content {
+          width: 100%;
+          height: 150px;
+          background-color: #444446;
+          div {
+            height: 100%;
+            float: left;
+            color: white;
+            font-size: 40px;
+            line-height: 110px;
+            font-weight: 600;
+          }
+          .total {
+            width: 73%;
+            padding-left: 8%;
+          }
+          .commit {
+            width: 19%;
+            background-color: #ffa800;
+            font-size: 40px;
+            text-align: center;
+            a{
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+  // 弹窗
+  .popBox{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+    .popup {
+      width: 868px;
+      height: 700px;
+      position: absolute;
+      border-radius: 100px;
+      left: 50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      background: white;
+      span {
+        display: block;
+        width: 347px;
+        height: 330px;
+        img {
+          position: absolute;
+          left: 30%;
+          top: -25%;
+          width: 370px;
+          height: 350px;
+        }
+
+      }
+      p{
+        height: 80px;
+        line-height: 60px;
+        font-size: 40px;
+        //margin-top: -65px;
+        text-align: center;
+      }
+      p:nth-child(2){
+        margin-top: -140px;
+      }
+      p:nth-child(3){
+        color: #777;
+        width: 60%;
+        margin-left: 20%;
+      }
+      button {
+        width: 464px;
+        height: 136px;
+        border-radius: 70px;
+        background-color: #fffef7;
+        border: 2px solid #f9b023;
+        font-size: 80px;
+        color: #ffa800;
+        font-weight: 200;
+        margin-left: 24%;
+        margin-top: 100px;
+      }
+    }
+  }
+
+}

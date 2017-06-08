@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>详细信息</title>
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/top.css" />
+		<link rel="stylesheet" href="../../css/GeRenCenter/xiangxi_jifen.css" />
+	</head>
+	<body>
+		<div class="container" >
+		    <header><img src="../../img/gerenzhongxin/person_head.png" alt=""></header>
+		    <div class="content">
+		        <div class="content_top">
+		            <ul>
+		                <li class="fl"><a href="personal.html"><img src="../../img/back.png" alt=""></a></li>
+		                <li class="fr">详细信息</li>
+		            </ul>
+		        </div>
+		        <div class="jinggao">* 如信息有误，请至相应机构进行修改</div>
+		        <div class="message">
+			        	 <form action="">
+				        	<ul class="xiangxi-items">
+				        		<!--<li><label for="">姓&nbsp; &nbsp; &nbsp;&nbsp;名：</label><p class="name"></p></li>
+				        		<li><label for="">身 &nbsp;份 证：</label><p class="idCard">411433198707070304</p></li>
+				        		<li><label for="">性&nbsp; &nbsp; &nbsp;&nbsp;别：</label><p class="sex">男</p></li>
+				        		<li><label for="">年&nbsp; &nbsp; &nbsp;&nbsp;龄：</label><p class="age">40</p></li>
+				        		<li><label for="">手 &nbsp;机 号：</label><p class="phone">11111111111</p></li>
+				        		<li><label for="">地&nbsp; &nbsp; &nbsp;&nbsp;址：</label><p class="address ">徐汇区桂平路481弄20栋6楼</p></li>
+				        		<li><label for="">所属街道：</label><p class="address1">所属街道所属街道</p></li>
+				        		<li><label for="">所属居委：</label><p class="address2">所属街道所属街道</p></li>	-->
+				        	</ul>
+			        </form>
+		        </div>
+		    </div>
+		</div>
+	</body>
+	<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+	
+	<script id="xiangxi_list" type="text/html">
+		{{ each response as item index}}
+			<li><label for="">{{item.label}}</label> <p class="name">{{item.value}}</p></li>
+		{{ /each}}
+	</script>
+	<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+	<script src="../../script/common.js"></script>
+	<script>
+		$(function(){
+			// 获取详细信息
+            function sendDetailInfo() {
+				$.ajax({
+					url:localStorage.getItem("URL")+"/app/elder/detailInfo",
+					type:"get",
+					dataType:"json",
+					data:{},
+					headers:{
+						"token":localStorage.getItem("token")
+					},
+					success: function (data) {
+						if(data.code === "-999"){
+							sendLogin(sendDetailInfo);
+						}else {
+							$(".xiangxi-items").html(template("xiangxi_list", data));
+						}
+
+					}
+				});
+			}
+            sendDetailInfo();
+		})
+	</script>
+</html>

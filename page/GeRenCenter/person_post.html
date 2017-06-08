@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>岗位列表</title>
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/top.css" />
+    <link rel="stylesheet" href="../../css/AiXinBank/job_list.css" />
+</head>
+<body>
+<div class="container" >
+    <header><img src="../../img/AIXiBank/loverbank.png" alt=""></header>
+    <div class="content">
+        <div class="content_top">
+            <ul>
+                <li class="fl"><a href="personal.html"><img src="../../img/back.png" alt=""></a></li>
+                <li class="fr">岗位列表</li>
+            </ul>
+        </div>
+        <div class="content_center">
+            <ul class="job_list">
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<div class="top">-->
+                            <!--<img src="../../img/AIXiBank/bank.png" alt="">-->
+                            <!--<div class="top_right">-->
+                                <!--<p>岗位名称</p>-->
+                                <!--<p>发布者：万达信息股份有限公司</p>-->
+                                <!--<p>还需志愿者：2人</p>-->
+                            <!--</div>-->
+                            <!--<div class="line"></div>-->
+                            <!--<div class="describe">-->
+                                <!--<span>岗位描述: </span>-->
+                                <!--<p>这里是岗位的描述这里是岗位的描述这里是岗位的描述</p>-->
+                            <!--</div>-->
+                         <!--</div>-->
+                     <!--</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+<script id="person_post" type="text/html">
+    {{ each response item index}}
+    <li id="{{item.id}}">
+        <a href="#">
+            <div class="top">
+                <img src="../../img/AIXiBank/bank.png" alt="">
+                <div class="top_right">
+                    <p>{{ item.name}}</p>
+                    <p>发布者：{{item.promulgator}}</p>
+                    <p>还需志愿者：{{item.remain}}人</p>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="describe">
+                <span>岗位描述: </span>
+                <p>{{item.desc}}</p>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+        localStorage.setItem("job_id",null);
+        function sendMypost() {
+            $.ajax({
+//            url:"http://172.16.24.170:8081/app/volunteerJob/all",
+                url:localStorage.getItem("URL")+"/app/volunteerJob/all",
+                type:"get",
+                dataType:"json",
+                data:{},
+                headers:{
+                    "token":localStorage.getItem("token")
+                },
+                success: function (data) {
+                    if(data.code === "-999"){
+                        sendLogin(sendMypost);
+                    }else {
+                        $(".job_list").html(template("person_post", data));
+                        $(".job_list li").on("click", function () {
+                            localStorage.setItem("job_id",$(this).attr("id"));
+                            window.location.href = "../AiXinBank/loveBank.html";
+                        });
+                    }
+                }
+            });
+        }
+        sendMypost();
+
+    })
+</script>

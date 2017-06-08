@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>评估结果</title>
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/top.css" />
+	<link rel="stylesheet" href="../../css/GeRenCenter/pinggu.css" />
+</head>
+<body>
+<div class="container" >
+	<header><img src="../../img/gerenzhongxin/person_head.png" alt=""></header>
+	<div class="content">
+		<div class="content_top">
+			<ul>
+				<li class="fl"><a href="personal.html"><img src="../../img/back.png" alt=""></a></li>
+				<li class="fr">评估结果</li>
+			</ul>
+		</div>
+		<div class="shenqing">
+			<div class="rank">
+				<div class="center"><img src="../../img/gerenzhongxin/gold.png" alt="" /><i>V2</i></div>
+			</div>
+			<p class="pg">您目前评估等级为<span>二级</span>，可以享受以下服务了哦~</p>
+			<ul>
+				<li>	折扣价购买商品</li>
+				<li>	反馈问题客户工作日24小时内处理</li>
+				<li>	做任务积分增长速度1.3倍</li>
+				<li>	专属活动参与权利可享受的服务</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/common.js"></script>
+<script>
+	$(function () {
+		$.ajax({
+			url:localStorage.getItem("URL")+"/app/elder/evaluationLevel",
+			headers:{
+				"token":localStorage.getItem("token")
+			},
+			dataType:"json",
+			type:"get",
+			success: function (data) {
+				if(data.code === "-999"){
+					sendLogin(sendLevel);
+				}else {
+						$(".center i").html("V"+data.response.level);
+						$(".pg span").html(data.response.name);
+				}
+			}
+		})
+	})
+</script>
+</html>

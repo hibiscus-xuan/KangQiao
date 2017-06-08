@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资讯列表</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/top.css">
+    <link rel="stylesheet" href="../../css/ZiXun/zixun_list.css">
+</head>
+<body >
+<div class="container" >
+    <!--顶部头-->
+    <header><img src="../../img/head.png" alt=""></header>
+    <div class="content">
+        <div class="content_top">
+            <ul>
+                <li class="fl" ><a href="../../index.html"><img src="../../img/back.png" alt=""></a></li>
+                <li class="fr">行业咨询</li>
+            </ul>
+        </div>
+        <div class="content_bottom">
+            <!--tab切换-->
+            <div class="content_bottom_tab">
+                <a id="zixun_btn">政策新闻 <span style="display: inline-block"></span></a>
+                <a id="huodong_btn">活动 <span></span></a>
+            </div>
+            <!--资讯列表和活动列表-->
+            <ul class="zixun_items" id="zixun_items">
+                <!--<li class="item clearfix">-->
+                    <!--<a href="zixun_details.html">-->
+                        <!--<div class="item_left fl"><img  alt="" src='../../img/ZiXun/ZiXun.png'></div>-->
+                        <!--<div class="item_right fl">-->
+                            <!--<h3 class="headline">国产大飞机'胖九'卖萌自述:天高从此任我飞</h3>-->
+                            <!--<p class="describe">这里是描述内容,最多显示两行,多出部分用省略号显示</p>-->
+                            <!--<span class="time">2017-05-05&nbsp;&nbsp;&nbsp;12:30</span>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+            </ul>
+            <ul class="huodong_items" id="huodong_items">
+                <!--<li class="item">-->
+                    <!--<a href="zixun_details.html">-->
+                        <!--<div class="item_content">-->
+                            <!--<img src="../../img/zixun/active_01.png" alt="">-->
+                            <!--<span class="item_title">手机主题征集大赛正在河南"郑州"火热报名中,我们需要您的热情参与</span>-->
+                            <!--<span class="item_time">发布时间: 05-50 12:23</span>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+            </ul>
+            <div class="add">
+                点击加载更多
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+<!--资讯列表模版-->
+<script id="zixun_list" type="text/html">
+    {{ each content as item index }}
+    <li class="item clearfix" id="{{item.id}}">
+        <a href="zixun_details.html" onclick=" localStorage.setItem('zixun_flag',true);">
+            <div class="item_left fl"><img  alt="" src='../../img/zixun/zixun.png'></div>
+            <div class="item_right fl">
+                <!--{{if item.title===''}}-->
+                <!--{{else}}-->
+                <!--{{/if}}-->
+                <h3 class="headline">{{item.title}}</h3>
+                <span class="time">{{item.updateTime}}</span>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+
+</script>
+<!--活动列表模版-->
+<script id="huodong_list" type="text/html">
+   {{each content as item index}}
+    <li class="item" id="{{item.id}}">
+        <a href="zixun_details.html" onclick=" localStorage.setItem('zixun_flag',false);">
+            <div class="item_content">
+                <img src="../../img/zixun/active_01.png" alt="">
+                <span class="item_title">{{item.title}}</span>
+                <span class="item_time">发布时间: {{item.updateTime}}</span>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+</script>
+<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+<script src="../../script/common.js"></script>
+<script src="../../script/ZiXun/zixun.js"></script>
+</html>

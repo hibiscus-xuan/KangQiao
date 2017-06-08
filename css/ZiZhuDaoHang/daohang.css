@@ -1,0 +1,31 @@
+.content{
+	background-color: #fafafa;
+}
+.container .content .content_bottom .bottom_left {
+  width: 30%;
+}
+.container .content .content_bottom .bottom_left .items {
+  width: 100%;
+}
+.container .content .content_bottom .bottom_left .items .item {
+  width: 100%;
+  text-align: center;
+  height: 200px;
+  line-height: 200px;
+  border-bottom: 2px solid #ededed;
+  font-size: 35px;
+}
+.container .content .content_bottom .bottom_right {
+  width: 70%;
+  height: 600px;
+}
+.items li:first-child{
+  background: url(../../img/zi_click.png) no-repeat;
+  background-size: cover;
+}
+#l-map{
+	height: 1348px;
+}
+header>img{
+	width: 100%;
+}

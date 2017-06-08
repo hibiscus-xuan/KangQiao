@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的订单</title>
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/top.css" />
+		<link rel="stylesheet" href="../../css/GeRenCenter/myorder.css" />
+	</head>
+	<body>
+		<div class="container" >
+		    <header><img src="../../img/gerenzhongxin/person_head.png" alt=""></header>
+		    <div class="content">
+		        <div class="content_top">
+		            <ul>
+		                <li class="fl"><a href="personal.html"><img src="../../img/back.png" alt=""></a></li>
+		                <li class="fr">我的订单</li>
+		            </ul>
+		        </div>
+		       <div class="content_bottom">
+		            <div class="content_bottom_tab">
+		                <a id="daifu_btn">代付款 <span style="display: inline-block"></span></a>
+		                <a id="wancheng_btn">已完成 <span></span></a>
+		            </div>
+		            <ul class="daifu_items" id="daifu_items">
+		            	
+		             	<!--<li><a href="pay_details.html">
+		             		<p class="order">订单号：22134567</p>
+		             		<div class="restaurant">
+		             			<img src="../../img/gerenzhongxin/food.png" alt="" />
+		             			<div class="address">
+		             				<p class="fir">卫康新村送餐点</p>
+			             			<span>上海市徐汇区钦州北路22号 103室</span>
+			             			<p class="sec">就餐时间段04-02到04-09</p>
+		             			</div>
+		             			<p class="thir">待付款<span>￥<i class="price">199.00</i></span></p>
+		             		</div>
+		             		<div class="btn">
+		             			<button class="btn1"><a href="../ZhuCan/pay.html">去付款</a></button><button class="btn2">取消订单</button>
+		             		</div></a>
+		             	</li>-->
+		            </ul>
+		            <ul class="wancheng_items" id="wancheng_items" style="display: none;">
+						<!--<li>
+							<a href="complatepage.html">
+		             		<p class="order">订单号：22134567</p>
+		             		<div class="restaurant">
+		             			<img src="../../img/gerenzhongxin/food.png" alt="" />
+		             			<div class="address">
+		             				<p class="fir">卫康新村送餐点</p>
+			             			<span>上海市徐汇区钦州北路22号 103室</span>
+			             			<p class="sec">就餐时间段04-02到04-09</p>
+		             			</div>
+		             			<p class="thir">实付款<span>￥<i class="price">199.00</i></span></p>
+		             		</div>
+		             		</a>
+		             	</li>-->
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+	</body>
+	<script src="../../script/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../../script/bower_components/artTemplate/lib/template-web.js"></script>
+	<script type="text/html" id="wait-pay">
+		{{ each content as item index}}
+			<li id="{{item.orderId}}"><a href="pay_details.html">
+         		<p class="order">订单号：{{item.orderId}}</p>
+         		<div class="restaurant">
+         			<img src="../../img/gerenzhongxin/food.png" alt="" />
+         			<div class="address">
+         				<p class="fir">{{item.companyName}}</p>
+             			<span>{{item.address}}</span>
+             			<p class="sec">就餐时间段{{item.diningDate[0]}}到{{item.diningDate[1]}}</p>
+         			</div>
+         			<p class="thir">待付款<span>￥<i class="price">{{item.price}}</i></span></p>
+         		</div>
+         		<div class="btn">
+         			<button class="btn1"><a href="../ZhuCan/pay.html">去付款</a></button>
+         			<button class="btn2" >取消订单</button>
+         		</div></a>
+         	</li>
+		{{/each}}
+	</script>
+	<script type="text/html" id="full-pay">
+		{{ each response as item index}}
+			<li><a href="complatepage.html">
+         		<p class="order">订单号：{{item.id}}</p>
+         		<div class="restaurant">
+         			<img src="../../img/gerenzhongxin/food.png" alt="" />
+         			<div class="address">
+         				<p class="fir">{{item.companyName}}</p>
+             			<span>{{item.address}}</span>
+             			<p class="sec">就餐时间段{{item.diningDate[0]}}到{{item.diningDate[1]}}</p>
+         			</div>
+         			<p class="thir">实付款<span>￥<i class="price">199.00</i></span></p>
+         		</div>
+         	</li>
+		{{/each}}
+	</script>
+	<script src="../../node_modules/mockjs/dist/mock-min.js"></script>
+	<script src="../../script/common.js"></script>
+	<script >
+        function sendDisableOrder(id) {
+			$.ajax({
+					type:"delete",
+					url:localStorage.getItem("URL")+"/app/diningOrder/disableOrder/"+id,
+					async:true,
+					headers:{
+						"token":localStorage.getItem("token")
+					},
+					success:function(data){
+						if(data.code === '-999'){
+							sendLogin(sendDisableOrder);
+						}else {
+							$("#"+id).remove();
+						}
+
+					}
+				});
+			}
+		function sendOrder(type,element,templateId) {
+				$.ajax({
+					type:"get",
+					url:localStorage.getItem("URL")+"/app/diningOrder/list",
+					async:true,
+					headers:{
+						"token":localStorage.getItem("token")
+					},
+					data:{
+						type:type,
+						page:0,
+						size:10
+					},
+					success:function(data){
+						if(data.code === '-999'){
+							sendLogin(sendOrder);
+						}else {
+							var str = $(element).html();
+							if(data.code =="0"){
+								$(element).html(str + template(templateId, data.response));
+								$(".btn2").on("click", function () {
+									window.confirm_=confirm("确定删除订单?");
+									var id= $(this).parent().parent().attr("id");
+									console.log(id);
+									if(confirm_){
+										sendDisableOrder(id);
+									}
+
+								});
+							}else {
+								console.log(data.message);
+							}
+						}
+
+					}
+				});
+			}
+	    $(function () {
+	    	 sendOrder("unfinish",".daifu_items","wait-pay")
+	        //  点击切换代付款和已完成
+	         $("#daifu_btn,#wancheng_btn").on("click", function () {
+	           if($(this).attr('id')=="daifu_btn"){
+	                 $("#daifu_items").css("display","block");
+	                 $("#wancheng_items").css("display","none");
+	           }else {
+	                 $("#daifu_items").css("display","none");
+	                 $("#wancheng_items").css("display","block");
+				     sendOrder("finished",".wancheng_items","full-pay");
+	           }
+	                 $(this).find("span").css("display","inline-block");
+	                 $(this).siblings().find("span").css("display","none");
+	         });
+	    });
+	</script>
+</html>
